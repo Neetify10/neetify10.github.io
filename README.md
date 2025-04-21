@@ -1,1 +1,1 @@
-hello, go to my "Neetify10" repo website which serves as a home for all my projects
+A website that is made to serve as a home for all my projects
