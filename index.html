@@ -48,12 +48,43 @@
         
         <section id="contact" style="text-align: center; margin-top: 50px;  margin-bottom: 200px;"></section>
             <h1 style="font-size: 80px; margin-bottom: -30px;">contact</h1>
-            <h2 style="font-size: 30px;">currently you can't contact me</h2>
-        </section>
+            <h2 style="font-size: 30px; margin-bottom: 200px;">you cannot contact me currently</h2>
+            <a href="./" class="top-button" id="back-to-top">
+                Back to Top
+            </a>
 
-        <a href="./" class="project-button" style="margin-top: 200px; margin-bottom: 100px;">
-            Back to Top
-        </a>
+            <script>
+                const backToTopButton = document.getElementById('back-to-top');
+                let isScrolling;
+
+                window.addEventListener('scroll', () => {
+                    clearTimeout(isScrolling);
+
+                    if (window.scrollY > 100) {
+                        backToTopButton.style.display = 'block';
+                        setTimeout(() => {
+                            backToTopButton.style.transform = 'scale(1)';
+                            backToTopButton.style.opacity = '1';
+                        }, 0);
+                    } else {
+                        backToTopButton.style.transform = 'scale(0.8)';
+                        backToTopButton.style.opacity = '0';
+                        isScrolling = setTimeout(() => {
+                            backToTopButton.style.display = 'none';
+                        }, 300);
+                    }
+                });
+
+                backToTopButton.addEventListener('mouseover', () => {
+                    backToTopButton.style.transform = 'scale(1.1)';
+                    backToTopButton.style.backgroundColor = '#1a1a1a';
+                });
+
+                backToTopButton.addEventListener('mouseout', () => {
+                    backToTopButton.style.transform = 'scale(1)';
+                    backToTopButton.style.backgroundColor = '';
+                });
+            </script>
     </div>
 </body>
 </html>
