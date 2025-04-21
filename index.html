@@ -10,11 +10,28 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="#projects">projects</a>
-        <a href="#certificates">certificates</a>
-        <a href="#youtube">youtube</a>
-        <a href="#contact">contact</a>
-    </div>
+        <a href="#projects" class="smooth-scroll">projects</a>
+        <a href="#certificates" class="smooth-scroll">certificates</a>
+        <a href="#youtube" class="smooth-scroll">youtube</a>
+        <a href="#contact" class="smooth-scroll">contact</a>
+        </div>
+
+        <script>
+            document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        </script>
 
     <div class="center">
         <img src="./images/pfp-circle.png" alt="Neetify" class="pfp" style="width: 150px; height: 150px; margin-bottom: -60px;">
@@ -53,37 +70,29 @@
 
         <a href="./" class="top-button" id="back-to-top">
             Back to Top
-        </a>
         <script>
             const backToTopButton = document.getElementById('back-to-top');
-            let isScrolling;
-            let isIdle;
 
             window.addEventListener('scroll', () => {
-            clearTimeout(isScrolling);
-            clearTimeout(isIdle);
-
             if (window.scrollY > 100) {
                 backToTopButton.style.display = 'block';
                 setTimeout(() => {
                 backToTopButton.style.transform = 'scale(1)';
                 backToTopButton.style.opacity = '1';
                 }, 0);
-
-                isIdle = setTimeout(() => {
-                backToTopButton.style.transform = 'scale(0.8)';
-                backToTopButton.style.opacity = '0';
-                setTimeout(() => {
-                    backToTopButton.style.display = 'none';
-                }, 300);
-                }, 1000);
             } else {
                 backToTopButton.style.transform = 'scale(0.8)';
                 backToTopButton.style.opacity = '0';
-                isScrolling = setTimeout(() => {
                 backToTopButton.style.display = 'none';
-                }, 300);
             }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
             });
 
             backToTopButton.addEventListener('mouseover', () => {
